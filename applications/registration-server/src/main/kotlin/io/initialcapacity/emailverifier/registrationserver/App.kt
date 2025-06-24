@@ -55,7 +55,7 @@ fun main(): Unit = runBlocking {
     val registrationRequestExchange = RabbitExchange(
         name = "registration-request-exchange",
         type = "x-consistent-hash",
-        routingKeyGenerator = { message: String -> message.hashCode().toString() },  // 根据消息内容计算路由密钥
+        routingKeyGenerator = { message: String -> message.hashCode().toString() },
     )
     val registrationRequestQueue = RabbitQueue(System.getenv("REGISTRATION_REQUEST_QUEUE") ?: "registration-request")
     val routingKey = System.getenv("ROUTING_KEY") ?: "42"
